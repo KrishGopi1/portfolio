@@ -1,0 +1,84 @@
+/* Swinging hero overlay (src/hero). */
+.hs-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-hero);
+  overflow: hidden;
+  contain: strict;
+}
+.hs-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+
+  --hs-r: var(--red);
+  --hs-b: var(--blue);
+  --hs-k: var(--ink);
+  --hs-w: #ffffff;
+  --hs-w2: #c9d3ff;
+  --hs-dk: #2a2a4a;
+  --hs-glow: var(--cyan);
+  --hs-hl: rgba(255, 255, 255, 0.5);
+  --hs-sh: rgba(11, 11, 26, 0.36);
+  --hs-sw: 1.1;
+  --hs-lw: 1.8;
+  --hs-dv: visible;
+}
+
+/* Part paint, all driven by custom properties so <use> copies can recolour. */
+.hs-f { stroke: var(--hs-k); stroke-width: var(--hs-sw); stroke-linejoin: round; stroke-linecap: round; }
+.hs-r { fill: var(--hs-r); }
+.hs-b { fill: var(--hs-b); }
+.hs-dk { fill: var(--hs-dk); }
+.hs-k { fill: var(--hs-k); }
+.hs-glow { fill: var(--hs-glow); visibility: var(--hs-dv); }
+.hs-sh { fill: var(--hs-sh); visibility: var(--hs-dv); }
+.hs-hl { fill: var(--hs-hl); visibility: var(--hs-dv); }
+.hs-ln { fill: none; stroke: var(--hs-k); stroke-width: 0.5; stroke-linecap: round; stroke-linejoin: round; visibility: var(--hs-dv); }
+.hs-ln-b { stroke-width: 0.85; }
+.hs-lens { fill: var(--hs-w); stroke: var(--hs-k); stroke-width: var(--hs-lw); stroke-linejoin: round; }
+.hs-lens2 { fill: var(--hs-w2); visibility: var(--hs-dv); }
+
+/* Fat ink silhouette pass behind the fills = bold, seamless outer outline. */
+.hs-outline {
+  --hs-r: var(--hs-k);
+  --hs-b: var(--hs-k);
+  --hs-w: var(--hs-k);
+  --hs-dk: var(--hs-k);
+  --hs-sw: 4.6;
+  --hs-lw: 4.6;
+  --hs-dv: hidden;
+}
+
+/* Spider-Verse chromatic misregistration copies. */
+.hs-ghost {
+  --hs-sw: 3;
+  --hs-lw: 3;
+  --hs-dv: hidden;
+}
+.hs-ghost-c { --hs-k: var(--cyan); --hs-r: var(--cyan); --hs-b: var(--cyan); --hs-w: var(--cyan); --hs-dk: var(--cyan); }
+.hs-ghost-m { --hs-k: var(--magenta); --hs-r: var(--magenta); --hs-b: var(--magenta); --hs-w: var(--magenta); --hs-dk: var(--magenta); }
+
+.hs-rope-ink { fill: none; stroke: var(--ink); stroke-linecap: round; }
+.hs-rope { fill: none; stroke: var(--web); stroke-linecap: round; }
+.hs-splat { fill: none; stroke: var(--web); stroke-width: 1.6; stroke-linecap: round; }
+.hs-splat-ink { fill: none; stroke: var(--ink); stroke-width: 3.4; stroke-linecap: round; }
+
+.hs-speed line { stroke-linecap: round; }
+
+.hs-thwip-burst { fill: var(--yellow); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.hs-thwip-burst2 { fill: #fff; }
+.hs-thwip-text {
+  font-family: var(--font-display);
+  font-size: 26px;
+  letter-spacing: 1px;
+  fill: var(--red);
+  stroke: var(--ink);
+  stroke-width: 5px;
+  paint-order: stroke fill;
+  stroke-linejoin: round;
+}

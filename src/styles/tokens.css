@@ -1,0 +1,29 @@
+/* Design tokens: Spider-Verse comic palette. All components use these. */
+:root {
+  --ink: #0b0b1a;          /* comic ink / night sky */
+  --ink-2: #14142b;
+  --paper: #fff6e0;        /* aged comic paper */
+  --paper-2: #f3e6c4;
+  --red: #e11d2e;          /* suit red */
+  --red-deep: #8f0d1a;
+  --blue: #1f3fbf;         /* suit blue */
+  --blue-deep: #0f1f6b;
+  --yellow: #ffd400;       /* SFX / caption yellow */
+  --cyan: #00e5ff;         /* Spider-Verse chromatic offset */
+  --magenta: #ff2bd6;      /* Spider-Verse chromatic offset */
+  --web: #e8ecff;          /* web strand */
+
+  --font-display: "Bangers", "Impact", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --stroke: 4px;           /* comic panel outline */
+  --shadow-hard: 8px 8px 0 var(--ink);
+  --radius: 4px;
+
+  /* Layering contract */
+  --z-scene: 0;            /* WebGL city (src/scene) */
+  --z-content: 10;         /* sections (src/sections) */
+  --z-hero: 30;            /* swinging spider (src/hero), pointer-events: none */
+  --z-hud: 50;             /* nav / HUD / loader (src/ui) */
+}

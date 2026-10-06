@@ -1,0 +1,205 @@
+.verse__intro {
+  max-width: 560px;
+  margin-top: 22px;
+  transform: rotate(-1deg);
+}
+
+.verse__rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 4vw, 44px);
+  padding-block: 20px 30px;
+}
+
+.marquee {
+  margin-inline: -8%;
+  padding: 16px 0;
+  overflow: hidden;
+  background-color: var(--ink);
+  background-image: var(--halftone-paper);
+  background-size: 10px 10px;
+  border-block: 4px solid var(--paper);
+  box-shadow: 0 8px 0 var(--red);
+  transform: rotate(var(--tilt, -2deg));
+}
+.marquee--rev {
+  background-color: var(--yellow);
+  background-image: var(--halftone-ink);
+  border-color: var(--ink);
+  box-shadow: 0 8px 0 var(--blue);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--dur, 40s) linear infinite;
+}
+.marquee--rev .marquee__track {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+.marquee__half {
+  display: flex;
+  align-items: center;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Portals: every interest is a different universe ---------- */
+.portal {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  margin-inline: 14px;
+  padding: 12px 22px 10px;
+  white-space: nowrap;
+  border: var(--stroke) solid var(--ink);
+  transition: transform 0.25s var(--ease-back);
+}
+.portal:hover {
+  transform: scale(1.08) rotate(-2deg);
+}
+.portal small {
+  font: 700 0.68rem var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.portal b {
+  font: 400 clamp(1.5rem, 3.2vw, 2.4rem)/1 var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+/* Pop-art: red with Ben-Day dots */
+.portal--pop {
+  background-color: var(--red);
+  background-image: radial-gradient(circle, rgba(255, 212, 0, 0.55) 2px, transparent 2.6px);
+  background-size: 10px 10px;
+  color: var(--paper);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.portal--pop small {
+  color: var(--yellow);
+  opacity: 1;
+  text-shadow: 1px 1px 0 var(--ink), -1px -1px 0 var(--ink);
+}
+.portal--pop b {
+  -webkit-text-stroke: 0.04em var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 0.06em 0.06em 0 var(--ink);
+}
+
+/* Noir: monochrome rain */
+.portal--noir {
+  background-color: #111;
+  background-image: repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.09) 0 1px, transparent 1px 9px);
+  color: #f2f2f2;
+  border-color: #f2f2f2;
+  box-shadow: 6px 6px 0 #f2f2f2;
+  filter: grayscale(1);
+}
+.portal--noir b {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+}
+
+/* Glitch: chromatic split + scanlines */
+.portal--glitch {
+  background-color: #090914;
+  background-image: repeating-linear-gradient(0deg, rgba(0, 229, 255, 0.12) 0 2px, transparent 2px 5px);
+  color: #fff;
+  border-color: var(--cyan);
+  box-shadow: 5px 5px 0 var(--magenta), -5px -5px 0 var(--cyan);
+}
+.portal--glitch b {
+  text-shadow: -0.06em 0 0 var(--cyan), 0.06em 0 0 var(--magenta);
+}
+.portal--glitch:hover b {
+  animation: cv-jitter 0.25s steps(2, end) infinite;
+}
+
+/* Manga: speed lines + screentone */
+.portal--manga {
+  background-color: #fff;
+  background-image: repeating-conic-gradient(from 0deg at 50% 50%, #fff 0deg 4deg, #e7e7e7 4deg 8deg);
+  color: var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  border-radius: 2px;
+}
+.portal--manga b {
+  -webkit-text-stroke: 0.05em #fff;
+  paint-order: stroke fill;
+}
+
+/* Pixel: 8-bit console */
+.portal--pixel {
+  background: var(--blue-deep);
+  color: var(--yellow);
+  border: 0;
+  box-shadow:
+    0 -4px 0 0 var(--paper),
+    0 4px 0 0 var(--paper),
+    -4px 0 0 0 var(--paper),
+    4px 0 0 0 var(--paper),
+    8px 8px 0 0 var(--ink);
+}
+.portal--pixel small {
+  color: var(--cyan);
+}
+.portal--pixel b {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Punk: ransom-note collage */
+.portal--punk {
+  background: var(--magenta);
+  color: var(--ink);
+  border-style: dashed;
+  box-shadow: 6px 6px 0 var(--yellow), 10px 10px 0 var(--ink);
+  transform: rotate(2deg);
+}
+.portal--punk small {
+  align-self: flex-start;
+  padding: 1px 6px;
+  background: var(--yellow);
+  transform: rotate(-3deg);
+}
+.portal--punk b {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+}
+.portal--punk:hover {
+  transform: scale(1.08) rotate(4deg);
+}
+
+/* Reduced motion: static, wrapped wall of portals */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    width: auto;
+    animation: none !important;
+  }
+  .marquee__half {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px 0;
+    padding-inline: 10%;
+  }
+  .marquee__dup {
+    display: none !important;
+  }
+}

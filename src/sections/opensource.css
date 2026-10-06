@@ -1,0 +1,138 @@
+.teamup__wrap {
+  position: relative;
+  padding: clamp(14px, 2vw, 22px);
+  background: var(--ink);
+  border: var(--stroke) solid var(--paper);
+  box-shadow: 10px 10px 0 var(--magenta), -6px -6px 0 var(--cyan);
+}
+
+.teamup__banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em 0.5em;
+  margin: 0 0 clamp(14px, 2vw, 22px);
+  padding: 10px 14px 6px;
+  font: 400 clamp(2rem, 6vw, 4.6rem)/0.95 var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: repeating-linear-gradient(-45deg, var(--yellow) 0 18px, #ffe34d 18px 36px);
+  border: 3px solid var(--ink);
+  outline: 3px solid var(--paper);
+}
+.teamup__name {
+  color: var(--red);
+  -webkit-text-stroke: 0.035em var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 0.06em 0.06em 0 var(--ink);
+}
+.teamup__name--alt {
+  color: var(--blue);
+}
+.teamup__x {
+  color: var(--paper);
+  -webkit-text-stroke: 0.04em var(--ink);
+  paint-order: stroke fill;
+  font-size: 1.2em;
+  line-height: 0.7;
+}
+
+.teamup__split {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.teamup__panel {
+  position: relative;
+  padding: clamp(22px, 3vw, 40px);
+  border: var(--stroke) solid var(--ink);
+  color: var(--ink);
+}
+.teamup__panel--a {
+  background-color: var(--blue);
+  background-image: radial-gradient(circle, rgba(0, 229, 255, 0.4) 1.6px, transparent 2.2px);
+  background-size: 11px 11px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 100%, 0 100%);
+  padding-right: clamp(40px, 5vw, 70px);
+}
+.teamup__panel--b {
+  background-color: var(--red);
+  background-image: radial-gradient(circle, rgba(255, 212, 0, 0.45) 1.6px, transparent 2.2px);
+  background-size: 11px 11px;
+  clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%);
+  padding-left: clamp(40px, 5vw, 70px);
+}
+.teamup__h {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 12px 2px;
+  font: 400 clamp(1.6rem, 3vw, 2.2rem)/1 var(--font-display);
+  letter-spacing: 0.06em;
+  background: var(--ink);
+  color: var(--yellow);
+  transform: rotate(-2deg);
+}
+.teamup__text {
+  margin: 0;
+  padding: 16px 18px;
+  font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+  line-height: 1.65;
+  font-weight: 500;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.teamup__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.teamup__badges .sticker:nth-child(2) {
+  --tilt: 2deg;
+  background: var(--yellow);
+}
+.teamup__badges .sticker:nth-child(3) {
+  --tilt: -1deg;
+  background: var(--cyan);
+}
+
+.teamup__vs {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+
+@media (max-width: 760px) {
+  .teamup__split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .teamup__panel--a {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), 0 100%);
+    padding-right: clamp(22px, 3vw, 40px);
+    padding-bottom: 50px;
+  }
+  .teamup__panel--b {
+    clip-path: polygon(0 22px, 100% 0, 100% 100%, 0 100%);
+    padding-left: clamp(22px, 3vw, 40px);
+    padding-top: 56px;
+  }
+  .teamup__vs {
+    position: relative;
+    left: auto;
+    top: auto;
+    justify-self: center;
+    margin: -64px 0;
+    transform: rotate(-8deg) scale(0.72);
+  }
+  .teamup__wrap {
+    box-shadow: 6px 6px 0 var(--magenta), -4px -4px 0 var(--cyan);
+  }
+}

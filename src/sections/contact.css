@@ -1,0 +1,184 @@
+.signal {
+  padding-bottom: 0;
+  text-align: center;
+}
+.signal__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Searchlight beam from below */
+.signal__beam {
+  position: absolute;
+  left: 50%;
+  top: 280px;
+  bottom: 0;
+  width: min(900px, 140%);
+  translate: -50% 0;
+  background: linear-gradient(to top, rgba(255, 246, 224, 0.28), rgba(255, 212, 0, 0.08) 70%, transparent);
+  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+  animation: signal-sway 7s ease-in-out infinite alternate;
+  transform-origin: 50% 100%;
+}
+@keyframes signal-sway {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+
+.signal__lamp {
+  position: relative;
+  margin: 0 auto clamp(30px, 4vw, 48px);
+}
+.signal__disc {
+  position: relative;
+  width: clamp(230px, 34vw, 360px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbe8 0%, #fff1a8 46%, var(--yellow) 68%, #e3b800 100%);
+  border: 6px solid var(--ink);
+  box-shadow:
+    0 0 0 8px var(--paper),
+    0 0 0 14px var(--ink),
+    0 0 60px 22px rgba(255, 212, 0, 0.45),
+    0 0 160px 60px rgba(255, 212, 0, 0.18);
+  animation: signal-flicker 4.5s steps(1) infinite;
+}
+.signal__disc::after {
+  /* lens halftone */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, rgba(143, 13, 26, 0.18) 1.3px, transparent 1.9px);
+  background-size: 8px 8px;
+  -webkit-mask-image: radial-gradient(circle, transparent 50%, #000 100%);
+  mask-image: radial-gradient(circle, transparent 50%, #000 100%);
+}
+@keyframes signal-flicker {
+  0%, 100% { filter: brightness(1); }
+  47% { filter: brightness(0.86); }
+  48% { filter: brightness(1.05); }
+  83% { filter: brightness(0.92); }
+}
+.signal__emblem {
+  width: 84%;
+  height: 84%;
+  transition: transform 0.6s var(--ease-back);
+}
+.signal__lamp:hover .signal__emblem {
+  transform: rotate(-10deg) scale(1.05);
+}
+.signal__burst {
+  position: absolute;
+  right: -46px;
+  top: -18px;
+  transform: rotate(12deg);
+}
+.signal__burst .burst__text {
+  color: var(--yellow);
+}
+
+.signal__pitch {
+  max-width: 560px;
+  margin: 0 0 44px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.signal__mail {
+  flex-direction: column;
+  gap: 6px;
+  max-width: 100%;
+  padding: 0.5em 0.9em 0.4em;
+  font-size: clamp(1.6rem, 5.4vw, 3.6rem);
+  background: var(--red);
+  color: var(--paper);
+  box-shadow: 8px 8px 0 var(--ink), 14px 14px 0 var(--yellow);
+}
+.signal__mail:hover {
+  box-shadow: 12px 12px 0 var(--ink), 20px 20px 0 var(--yellow);
+}
+.signal__mail-label {
+  font: 700 0.8rem var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.signal__mail-addr {
+  -webkit-text-stroke: 0.03em var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 0.05em 0.05em 0 var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.signal__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px 26px;
+  margin: 46px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.signal__link {
+  min-width: 190px;
+}
+.signal__link--0 {
+  background: var(--cyan);
+  transform: rotate(-2deg);
+}
+.signal__link--1 {
+  background: var(--yellow);
+  transform: rotate(1.5deg);
+}
+.signal__link--2 {
+  background: var(--paper);
+  transform: rotate(-1deg);
+}
+
+.signal__footer {
+  position: relative;
+  margin-top: clamp(80px, 10vw, 140px);
+  padding: 22px 0 26px;
+  background: var(--ink);
+  border-top: var(--stroke) solid var(--paper);
+  box-shadow: 0 -8px 0 var(--red);
+}
+.signal__footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  font: 700 0.82rem/1.5 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  text-align: left;
+}
+.signal__footer-inner p {
+  margin: 0;
+}
+.signal__footer-joke {
+  color: var(--yellow);
+}
+.signal__footer-joke span {
+  color: var(--cyan);
+}
+
+@media (max-width: 620px) {
+  .signal__burst {
+    right: -20px;
+    --burst-size: 92px !important;
+  }
+  .signal__mail {
+    box-shadow: 6px 6px 0 var(--ink), 10px 10px 0 var(--yellow);
+    font-size: clamp(1.25rem, 6.6vw, 2rem);
+  }
+  .signal__link {
+    min-width: 150px;
+  }
+}
